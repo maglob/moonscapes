@@ -3,7 +3,7 @@ Moonscapes
 
 Multiplayer Thrust-alike game in Java, from years ago, with primitive Java (1.3?), but still compiles and runs!
 
-In fact, the main focus in this project was implementin thet Netplay library/framework for writing client-server programs in java. The game was just a demonstration.
+In fact, the main focus in this project was implementing the Netplay library/framework for writing client-server programs in java. The game was just a demonstration.
 
 Game graphics are bit clunky, because hardware accelerated graphics in Java was missing way back then.
 
