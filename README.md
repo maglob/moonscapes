@@ -36,4 +36,5 @@ Control in game:
     S - Turn right 
     Right shift - Thrust
     Enter - Fire
+    Space - Shield
     T - Chat
