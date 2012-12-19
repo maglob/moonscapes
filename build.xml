@@ -1,0 +1,58 @@
+<project name="Moonscapes" default="build" basedir=".">
+<!--    <property name="build.compiler" value="gcj"/>  -->
+
+    <target name="init">
+        <mkdir dir="build"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/>
+        <delete file="msclient.jar"/>
+        <delete file="msserver.jar"/>
+        <delete>
+            <fileset dir="src/">
+                <include name="*.class"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="build" depends="init">
+        <javac srcdir="src" destdir="build" debug="on"/>
+        <copy todir="build/net/moonscapes/server/model/">
+            <fileset dir="src/net/moonscapes/server/model/">
+                <include name="*.mdl"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="build_release" depends="init">
+        <javac srcdir="src" destdir="build" debug="off" optimize="on"/>
+        <copy todir="build/net/moonscapes/server/model/">
+            <fileset dir="src/net/moonscapes/server/model/">
+                <include name="*.mdl"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="jar" depends="build_release">
+        <jar jarfile="msclient.jar" basedir="build"
+             manifest="etc/MANIFEST.MF.CLIENT">
+            <include name="net/moonscapes/netplay/*.class"/>
+            <include name="net/moonscapes/netplay/common/*.class"/>
+            <include name="net/moonscapes/netplay/client/*.class"/>
+            <include name="net/moonscapes/client/*.class"/>
+            <include name="net/moonscapes/packet/*.class"/>
+            <include name="net/moonscapes/phys/*.class"/>
+        </jar>
+        <jar jarfile="msserver.jar" basedir="build" 
+             manifest="etc/MANIFEST.MF.SERVER">
+            <include name="net/moonscapes/netplay/*.class"/>
+            <include name="net/moonscapes/netplay/common/*.class"/>
+            <include name="net/moonscapes/netplay/server/*.class"/>
+            <include name="net/moonscapes/server/*.class"/>
+            <include name="net/moonscapes/server/model/*.mdl"/>
+            <include name="net/moonscapes/packet/*.class"/>
+            <include name="net/moonscapes/phys/*.class"/>
+        </jar>
+    </target>
+</project>
