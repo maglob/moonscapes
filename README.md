@@ -29,3 +29,11 @@ Run client:
     java -jar msclient.jar -help
   
     java -jar msclient.jar -host <hostname> -name MyNick
+    
+Control in game:
+
+    A - Turn left
+    S - Turn right 
+    Right shift - Thrust
+    Enter - Fire
+    T - Chat
